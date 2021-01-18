@@ -14,8 +14,21 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 
-print("Ingrese el id del usuario:")
-id = input()
+v = 0
+while v == 0:
+  print("Ingrese el id del usuario:")
+  id = input()
+
+  r = requests.get('https://es.stackoverflow.com/users/'+ id +'?tab=tags')
+
+  c = r.content
+  from bs4 import BeautifulSoup
+  soup = BeautifulSoup(c)
+
+  if not soup.find("h1", class_="fs-headline1 mb4"):
+    v = 1
+  if v == 0:
+    print("----- INGRESE UN USUARIO VALIDO -----")
 
 r = requests.get('https://es.stackoverflow.com/users/'+ id +'?tab=tags')
 
