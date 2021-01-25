@@ -89,8 +89,7 @@ if soup.find_all("a", class_="s-pagination--item js-pagination-item"):
       z=1
       e=e+1
       for i in a:        
-        if e == i:          
-          print("elimina etiqueta en la posición",i," con frecuencia 0")        
+        if e == i:
           z = 0       
       if z == 1: 
         Etiquetas.append(f.text)
